@@ -13,13 +13,9 @@ class ReplaceEnvironmentIdWithEnvironmentNameDeploys < ActiveRecord::Migration
         deploy.update_column(:environment_name, environment.name)
       end
     end
-
-    rename_column :user_notifications, :environment, :environment_name
   end
 
   def down
     remove_column :deploys, :environment_name
-
-    rename_column :user_notifications, :environment_name, :environment
   end
 end
